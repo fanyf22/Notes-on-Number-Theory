@@ -1,0 +1,135 @@
+\chapter{\emph{Dirichlet Characters}}
+
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{\emph{Group Characters of Integers}}
+
+\begin{notation}
+    In this section, $G$ is a finite abelian group.
+\end{notation}
+
+\begin{definition}
+    A \emph{character} of $G$ is a homomorphism $\chi: G \to \mathbb{C}^{\times}$. Such characters form a group under multiplication defined by $\chi_1\chi_2(g)=\chi_1(g)\chi_2(g)$. We call this group the \emph{character group} of $G$, or the \emph{dual} of $G$ and denote it by $G^*$. We usually denote the identity element of $G^*$ by $\chi_0$, called the \emph{principal character}.
+\end{definition}
+
+\begin{proposition}
+    $G\simeq G^*$ non-canonically.
+\end{proposition}
+
+\begin{proposition}
+    $G\simeq G^{**}$ canonically by mapping $g$ to $\chi\mapsto\chi(g)$.
+\end{proposition}
+
+\begin{proposition}
+    $(\cdot)^*$ is an exact functor.
+\end{proposition}
+
+\begin{proof}
+    Because $(\cdot)^*=\Hom(\cdot,\Q/\Z)$ and $\Q/\Z$ is an injective $\Z$-module.
+\end{proof}
+
+\begin{notation}
+    From now on, we identify $G^{**}$ with $G$.
+\end{notation}
+
+\begin{definition}
+    Let $H$ be a subgroup of $G$. The \emph{orthogonal complement} of $H$ is defined by $$ H^\perp:=\left\{\chi\in G^*:\chi(h)=1\text{ for any }h\in H\right\} $$
+\end{definition}
+
+\begin{proposition}
+    Let $H$ be a subgroup of $G$, then $H^{\perp\perp}=H$.
+\end{proposition}
+
+\begin{proof}
+    Since $(\cdot)^*$ is an exact functor, $(G/H)^*$ is indeed a subgroup of $G$, and by the definition of $H^\perp$ we see $H^\perp=(G/H)^*$. Thus we have $H^{\perp\perp}=(G^*/(G/H)^*)^*$. By the exactness of dual functor again we see $G^*/(G/H)^*=H^*$, hence $H^{\perp\perp}=H^{**}=H$. So proof.
+\end{proof}
+
+\begin{proposition}
+    For any $\chi,\chi'\in G^*$, we have $$ \frac1{\#G}\sum_{g\in G}{\chi(g)\bar\chi'(g)}=\begin{cases} 1 & \chi=\chi' \\ 0 & \chi\ne\chi' \end{cases} $$
+\end{proposition}
+
+\begin{proof}
+    Since the image of $\chi'$ has absolute value $1$, $\bar\chi'=\chi'^{-1}$, hence it suffices to show that $$ \frac1{\#G}\sum_{g\in G}{\chi(g)}=\begin{cases} 1 & \chi=1 \\ 0 & \chi\ne1 \end{cases} $$ The case $\chi=1$ is trivial. When $\chi\ne1$, we have $\chi(g_0)\ne1$ for some $g_0\in G$. Since $$ \chi(g_0)\sum_{g\in G}{\chi(g)}=\sum_{g\in G}{\chi(g_0g)}=\sum_{g\in G}{\chi(g)} $$ we prove the result.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{\emph{Dirichlet Characters}}
+
+\begin{definition}
+    We call the group characters of $(\Z/n\Z)^\times$ the \emph{Dirichlet characters} modulo $n$.
+\end{definition}
+
+\begin{remark}
+    Consider the natural homomorphism $(\Z/n\Z)^\times\rightarrow(\Z/m\Z)^\times$ for $m\mid n$, it induces the natual homomorphism $\widehat{(\Z/m\Z)^\times}\rightarrow\widehat{(\Z/n\Z)^\times}$, i.e., a Dirichlet character modulo $m$ can be regarded as a Dirichlet character modulo $n$. We say such two Dirichlet characters are equivalent. For each Dirichlet character $\chi$, there exists a unique $n$ such that it is equivalent to a Dirichlet character modulo $n$ but not modulo $m$ for any $m\mid n$. Such $n$ is called the \emph{conductor} of the Dirichlet character, denoted by $f_\chi$. We see if $\chi$ is a Dirichlet character modulo $n$, then $f_\chi\mid n$. If $n=f_\chi$, we say $\chi$ is \emph{primitive}. Thus, each Dirichlet character is equivalent to a primitive Dirichlet character, called the \emph{primitive form}.
+\end{remark}
+
+\begin{remark}
+    We may easily deduce that $\chi(-1)^2=1$, hence $\chi(-1)=\pm1$. We call $\chi(-1)$ the \emph{sign} of $\chi$. If $\chi(-1)=1$, we say $\chi$ is \emph{even}, otherwise \emph{odd}.
+\end{remark}
+
+Now we give another form of Dirichlet character:
+
+\begin{definition}
+    A \emph{lifted Dirichlet character} modulo $n$ is a map $\chi:\Z\rightarrow\C$ satisfying the following conditions:
+    \begin{enumerate}
+        \item $\chi$ is periodic with period $n$, i.e., $\chi(x+n)=\chi(x)$ for any $x\in\Z$;
+        \item $\chi(x)=0$ for all $x$ such that $\gcd(x,n)\ne1$;
+        \item $\chi$ is a group homomorphism from $(\Z/n\Z)^\times$ to $\C^\times$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    We see that for any Dirichlet character $\chi$ modulo $n$, we may define $\tilde\chi:\Z\rightarrow\C$ by:
+
+    \begin{enumerate*}[itemjoin=\hspace*{4em}]
+        \item $\tilde\chi(x)=\chi(x)$ for $x\in\Z$ such that $\gcd(x,n)=1$;
+        \item $\tilde\chi(x)=0$ for $x\in\Z$ such that $\gcd(x,n)\ne1$.
+    \end{enumerate*}
+
+    \noindent We see $\tilde\chi$ is a lifted Dirichlet character modulo $n$. We say $\tilde\chi$ is the \emph{lifting} of $\chi$.
+\end{remark}
+
+\begin{notation}
+    From now on, when we write $\chi(n)$, we always mean $\tilde\chi(n)$.
+\end{notation}
+
+\begin{definition}
+    We say the lifting of a primitive Dirichlet character is \emph{primitive}.
+\end{definition}
+
+\begin{proposition}
+    Let $\chi$ be a Dirichlet character modulo $n$, then we have $$ \sum_{k=1}^n{\chi(k)}=\begin{cases} \varphi(n) & \chi=\chi_0 \\ 0 & \chi\ne\chi_0 \end{cases} $$
+\end{proposition}
+
+\begin{proposition}
+    Let $x$ be an integer, then we have $$ \sum_{\chi\bmod n}{\chi(x)}=\begin{cases} \varphi(n) & x\equiv1\pmod n \\ 0 & x\not\equiv1\pmod n \end{cases} $$ where $\chi$ runs over all Dirichlet characters modulo $n$.
+\end{proposition}
+
+\begin{corollary}
+    Let $r$ be an integer prime to $n$, then we have for all $x\in\Z$ that $$ \sum_{\chi\bmod n}{\chi(x)\bar\chi(r)}=\begin{cases} \varphi(n) & x\equiv r\pmod n \\ 0 & x\not\equiv r\pmod n \end{cases} $$ where $\chi$ runs over all Dirichlet characters modulo $n$.
+\end{corollary}
+
+\begin{remark}
+    We see from the corollary that Dirichlet characters can tell whether an integer belongs to a residue class modulo $n$ by an equation. That helps us study the properties of primes in arithmetic progressions.
+\end{remark}
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{\emph{Dirichlet Characters of Ideals}}
+
+\begin{notation}
+    In this section, $K$ is a number field. $\MMM_K$ is the set of prime ideals in $K$, and $S$ is a finite subset of $\MMM_K$. $I^S$ is the free abelian group generated by primes in $\MMM_K-S$.
+\end{notation}
+
+\begin{definition}
+    An element $\alpha\in K^\times$ is totally positive if $\sigma(\alpha)\in\R_{>0}$
+\end{definition}
