@@ -1,0 +1,59 @@
+\chaptere{Group Extension}
+
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION %%%
+%%%%%%%%%%%%%%%%%%%
+
+\sectione{Second Cohomology}
+
+\begin{analysis}
+    Let $0\to A\xrightarrow iU\xrightarrow jG\to 0$ be a short exact sequence of groups, with $G$ finite and $A$ abelian. We take any elements $u_\sigma\in U$ for each $\sigma\in G$, such that $j(u_\tau)=\tau$. We define an action of $G$ over $A$ by $a^\sigma=u_\sigma au_\sigma^{-1}$. We claim that this action is well-defined, and independent on the choice of $u_\sigma$.
+
+    Firstly, since $A$ is a normal subgroup of $U$, we see $u_\sigma au_\sigma^{-1}\in A$. Since $A$ is abelian, and distinct choices of $u_\sigma$ only differ by $A$, the choice of $u_\sigma$ does not affect the value of $a^\sigma$. Since $j(u_\sigma u_\tau)=j(u_{\sigma\tau})$, we have $$ a^{\sigma\tau}=u_{\sigma\tau}au_{\sigma\tau}^{-1}=u_\sigma u_\tau au_\tau^{-1}u_\sigma^{-1}=(a^\tau)^\sigma $$ $$ a^\sigma b^\sigma=u_\sigma au_\sigma^{-1}\cdot u_\sigma bu_\sigma^{-1}=u_\sigma abu_\sigma^{-1}=(ab)^\sigma $$ Thus it is indeed a group action. We call it the induced action by $U/A\approx G$.
+\end{analysis}
+
+\begin{definition}
+    Let $A$ be a $G$-module. A \emph{group extension} of $A$ is a short exact sequence $0\to A\to E\to G\to 0$ (or $U/A\approx G$ for short) such that $G$ acts on $A$ by the induced action.
+\end{definition}
+
+\begin{analysis}
+    In fact, we can describe $U$ by $A$ and a map $(\sigma,\tau)\mapsto a_{\sigma,\tau}$ explicitly. Given a group extension $U/A\approx G$, we take $a_{\sigma,\tau}=u_\sigma u_\tau u_{\sigma\tau}^{-1}$. First, each element in $U$ can be uniquely written in the form $au_\sigma$ for some $a\in A$ and $\sigma\in G$. Thus it suffices to tell its multiplication: $$ au_\sigma bu_\tau=ab^\sigma u_\sigma u_\tau=ab^\sigma a_{\sigma,\tau}u_{\sigma\tau} $$ where $ab^\sigma a_{\sigma,\tau}\in A$ and $\sigma\tau\in G$. Thus we see a group extension of $A$ can be constructed by $U=A\times G$ as a set and $(a,\sigma)\cdot(b,\tau)=(ab^\sigma a_{\sigma,\tau},\sigma\tau)$ for some map $(\sigma,\tau)\mapsto a_{\sigma,\tau}$. Therefore, we wish to decribe what $a_{\sigma,\tau}$ induces a group extension, and what $a_{\sigma,\tau}$ induces the same group extension.
+
+    Firstly, we try to give a condition of $a_{\sigma,\tau}$ to induce a group extension. We start from the associative law: $$ ((a,\sigma)(b,\tau))(c,\gamma)=(a,\sigma)((b,\tau)(c,\gamma)) $$ From the multiplication we obtained above, we see \begin{align*} ((a,\sigma)(b,\tau))(c,\gamma)&=(ab^\sigma a_{\sigma,\tau},\sigma\tau)(c,\gamma)=(ab^\sigma c^{\sigma\tau}a_{\sigma,\tau}a_{\sigma\tau,\gamma},\sigma\tau\gamma) \\ (a,\sigma)((b,\tau)(c,\gamma))&=(a,\sigma)(bc^\tau a_{\tau,\gamma},\tau\gamma)=(ab^\sigma c^{\sigma\tau}a_{\tau,\gamma}^\sigma a_{\sigma,\tau\gamma},\sigma\tau\gamma) \end{align*} Thus we see $a_{\sigma,\tau}a_{\sigma\tau,\gamma}=a_{\tau,\gamma}^\sigma a_{\sigma,\tau\gamma}$. Conversely, if this condition is satisfied, then we can define a multiplication on $U$ by $au_\sigma bu_\tau=ab^\sigma a_{\sigma,\tau}u_{\sigma\tau}$, and it is associative. The inverse is $(b,\tau)^{-1}=(u_1^{-1}a_{\tau,\tau^{-1}}^{-1}b^{-\tau^{-1}},\tau^{-1})$. In conclusion, the condition is $a_{\tau,\gamma}^\sigma=a_{\sigma,\tau}a_{\sigma\tau,\gamma}a_{\sigma,\tau\gamma}^{-1}$, or $\sigma a_{\tau,\gamma}=a_{\sigma,\tau}-a_{\sigma,\tau\gamma}+a_{\sigma\tau,\gamma}$ additively.
+\end{analysis}
+
+\begin{proposition}
+    Let $A$ be a $G$-module. Then the map $(\sigma,\tau)\mapsto a_{\sigma,\tau}$ induces a group extention if and only if $\sigma a_{\tau,\gamma}=a_{\sigma,\tau}-a_{\sigma,\tau\gamma}+a_{\sigma\tau,\gamma}$ for any $\sigma,\tau,\gamma\in G$.
+\end{proposition}
+
+\begin{proposition}
+    If $a_{\sigma,\tau}$ induces $U/A\approx G$, then there exists a lifting $u_\sigma\in U$ such that $a_{\sigma,\tau}=u_\sigma u_\tau u_{\sigma\tau}^{-1}$.
+\end{proposition}
+
+\begin{proof}
+    We have seen that $U=A\times G$ with $(a,\sigma)\cdot (b,\tau)=(ab^\sigma a_{\sigma,\tau},\sigma\tau)$. Take $u_\sigma=(a_{1,1},\sigma)$
+\end{proof}
+
+\begin{definition}
+    Two group extensions $U,U'$ of $G$-module $A$ are said to be \emph{isomorphic}, if there exists a group isomorphism $f:U_1\to U_2$ such that the following diagram is commutative:
+    % https://q.uiver.app/#q=WzAsMTAsWzIsMCwiVSJdLFsxLDAsIkEiXSxbMCwwLCIwIl0sWzMsMCwiRyJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiQSJdLFsyLDEsIlUnIl0sWzMsMSwiRyJdLFs0LDEsIjAiXSxbMiwxXSxbNSw2XSxbMSw2LCJcXGlkIiwyXSxbMSwwXSxbMCw3LCJmIiwyXSxbNiw3XSxbNyw4XSxbOCw5XSxbMCwzXSxbMyw0XSxbMyw4LCJcXGlkIiwyXV0=
+    \[\begin{tikzcd}[row sep=2.25em]
+        0 & A & U & G & 0 \\
+        0 & A & {U'} & G & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=2-1, to=2-2]
+        \arrow["\id"', from=1-2, to=2-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow["f"', from=1-3, to=2-3]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+        \arrow["\id"', from=1-4, to=2-4]
+    \end{tikzcd}\]
+\end{definition}
+
+\begin{analysis}
+    Now we study on the problem of what $a_{\sigma,\tau}$ induces isomorphic group extensions. Let $a_{\sigma,\tau}$ and $a'_{\sigma,\tau}$ be two maps that induce group extensions $U$ and $U'$, such that there exists isomorpism $f:U\to U'$ of group extensions. Clearly, $f$ fixes $A$, and $j'\circ f(u_\sigma)=\sigma$. Thus we may write $x_\sigma=$
+\end{analysis}
